@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>姿美堂大数据中心</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 </head>
 <body>
-{{ log }}
+      <form action="excel_expoet" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <div id="contentTable" style="border: 0px;">
+              <h1 class="title" style="font-size: 24px; border-bottom: 1px solid #DFE3E6;text-align: center;">导入数据</h1>
+             <table width="80%">
+                 {% for field in form %}
+                     <tr>
+                       <td width="20%"align="left">
+                        {{field.label }}
+                       </td>
+
+                       <td width="70%" id="name_h1" title="" style="text-align: center;">
+                        {{ field }}
+                       </td>
+                         <td><input id="btnSave"  type="submit" value="上&nbsp;传" />
+                      </td>
+
+                     </tr>
+                 {% endfor %}
+             </table>
+        </div>
+      </form>
+      <form action="getExcel_keyWords" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <div id="contentTable" style="border: 0px;">
+             <table width="80%">
+                 {% for field2 in form2 %}
+                     <tr>
+                       <td width="20%"align="left">
+                        {{field2.label }}
+                       </td>
+
+                       <td width="70%" id="name_h1" title="" style="text-align: center;">
+                        {{ field2 }}
+                       </td>
+                         <td><input id="btnSave"  type="submit" value="上&nbsp;传" />
+                      </td>
+
+                     </tr>
+                 {% endfor %}
+             </table>
+        </div>
+      </form>
+      <iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
 </body>
+<script>
+ $('#hidden_frame').load(function(){
+    var text=$(this).contents().find("body").text();
+       // 根据后台返回值处理结果
+     if(text)
+       alert(text);
+});
+</script>
 </html>

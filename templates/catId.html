@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AES测试</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script src="{% static 'de.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".p1").html("生成:" + encrypt.getRequestHeader()['Transit-Id']);
+            {#var key = encrypt.getRequestHeader()['Transit-Id'];#}
+            {#$.ajax({#}
+            {#    url:'127.0.0.1:8000/chandle/popKey',#}
+            {#    type:"POST",#}
+            {#    success:function (data) {#}
+            {##}
+            {#    }#}
+            {#})#}
+            {#console.log(key)#}
+            // $(".p2").html("解密:" + JSON.stringify(encrypt.decrypt("7C04B0CCE6699A80D9A670C7697472A37AAA0C4F147D1CFFED9038A7E5E8AC9DB2D13C58E5096694E899E73E8261F3344F489FE1E05DC81FA6668CABE25FAC19724391C000FBD214933E07B6D6FA3E701ADEF56A2A85B2693BD0EFEEFBB092F8427CFE86E166996679D82DCDA8A45C204C8FC6FC933C32E0F5BD22AF0DF8C2B529E70002906A6E48912C39773CDCBED685A9283C588AA734387AF88C5FBA4DAAEE33B66456F345A3BBCC18C4E3383853D1FC4655F6A85847DC12F581F16FF27D242B55A5C7CADA7A4B0309E1329B6B17A70E97A48F46BA8A7F1B8F4E9BFC9B7EB01DD5C56079EE539682E9B0350D6FB35207445725DCA4A50797F3E3BDB2166A")));
+        })
+    </script>
+</head>
+<body>
+    <p class="p1"></p>
+    <p class="p2"></p>
+
+</body>
+</html>

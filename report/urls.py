@@ -16,7 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from electricityReport import views
+from django.conf.urls import include,url
 
 urlpatterns = [
-    path('', views.excel_expoet, name='excel_expoet'),
+    path('admin/', admin.site.urls),
+    url(r'^chandle/showpage', views.showpage),
+    url(r'^chandle/excel_expoet', views.excel_expoet, name='excel_expoet'),
+    url(r'^chandle/getExcel_keyWords', views.getExcel_keyWords, name='getExcel_keyWords'),
+    url(r'^chandle/parsingData', views.parsingData, name='parsingData'),
+    url(r'^chandle/getKey', views.getKey, name='getKey'),
+    url(r'^chandle/popKey', views.popKey, name='popKey'),
+    url(r'^search_tm_data', views.search_tm_data, name='search_tm_data'),
+    url(r'^search_tm_hotRank', views.search_tm_hotRank, name='search_tm_hotRank'),
+
 ]
