@@ -8,50 +8,55 @@
 from django.db import models
 
 
-class Industrydata(models.Model):
-    keywords = models.CharField(db_column='KeyWords', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    date = models.CharField(db_column='Date', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    rank = models.CharField(db_column='Rank', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    searchnumber = models.CharField(db_column='SearchNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    clicknumber = models.CharField(db_column='ClickNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    clickrate = models.CharField(db_column='ClickRate', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    paymentconversionrate = models.CharField(db_column='PaymentConversionRate', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    paynumber = models.CharField(db_column='PayNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
+class Clinchdeal(models.Model):
     primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
+    module = models.CharField(max_length=128)
+    starttime = models.CharField(db_column='startTime', max_length=256)  # Field name made lowercase.
+    endtime = models.CharField(db_column='endTime', max_length=256)  # Field name made lowercase.
+    updatetime = models.CharField(db_column='updateTime', max_length=256)  # Field name made lowercase.
+    good_me = models.CharField(max_length=256, blank=True, null=True)
+    jz_shop_name = models.CharField(max_length=256, blank=True, null=True)
+    js_shop_goodid = models.CharField(db_column='js_shop_goodID', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    uv = models.IntegerField()
+    keyword = models.CharField(max_length=256)
+    datetype = models.CharField(db_column='dateType', max_length=256)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'IndustryData'
+        db_table = 'ClinchDeal'
 
 
-class KeywordsOperation(models.Model):
+class Competingdrainage(models.Model):
     primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
-    operationdate = models.CharField(db_column='OperationDate', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    projectname = models.CharField(db_column='ProjectName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    operationtype = models.CharField(db_column='OperationType', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    promotecell = models.CharField(db_column='PromoteCell', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    keywords = models.CharField(db_column='KeyWords', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    bidway = models.CharField(db_column='BidWay', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    matchingway = models.CharField(db_column='MatchingWay', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeprice = models.CharField(db_column='BeforePrice', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    afterprice = models.CharField(db_column='AfterPrice', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeshow = models.CharField(db_column='BeforeShow', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeclick = models.CharField(db_column='BeforeClick', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforecount = models.CharField(db_column='BeforeCount', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeconversion = models.CharField(db_column='BeforeConversion', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeclinchdeal = models.CharField(db_column='BeforeClinchdeal', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    beforeroi = models.CharField(db_column='BeforeROI', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    aftershow = models.CharField(db_column='AfterShow', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    afterclick = models.CharField(db_column='AfterClick', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    aftercount = models.CharField(db_column='AfterCount', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    afterconversion = models.CharField(db_column='AfterConversion', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    afterclinchdeal = models.CharField(db_column='AfterClinchdeal', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    afterroi = models.CharField(db_column='AfterROI', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    operationpeople = models.CharField(db_column='OperationPeople', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    module = models.CharField(max_length=128)
+    starttime = models.CharField(db_column='startTime', max_length=256)  # Field name made lowercase.
+    endtime = models.CharField(db_column='endTime', max_length=256)  # Field name made lowercase.
+    updatetime = models.CharField(db_column='updateTime', max_length=256)  # Field name made lowercase.
+    good_me = models.CharField(max_length=256, blank=True, null=True)
+    jz_shop_name = models.CharField(max_length=256, blank=True, null=True)
+    js_shop_goodid = models.CharField(db_column='js_shop_goodID', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    uv = models.IntegerField()
+    keyword = models.CharField(max_length=256)
+    datetype = models.CharField(db_column='dateType', max_length=256)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'KeyWords_Operation'
+        db_table = 'CompetingDrainage'
+
+
+class Downloadoperationhistory(models.Model):
+    operationdate = models.CharField(db_column='operationDate', max_length=128)  # Field name made lowercase.
+    operationmoulename = models.CharField(db_column='operationMouleName', max_length=258)  # Field name made lowercase.
+    downloadcount = models.IntegerField(db_column='downLoadCount')  # Field name made lowercase.
+    searchid = models.CharField(max_length=256)
+    competinggoodsname = models.CharField(db_column='competingGoodsName', max_length=256)  # Field name made lowercase.
+    competingstorename = models.CharField(db_column='competingStoreName', max_length=256)  # Field name made lowercase.
+    competinggoodsid = models.CharField(db_column='competingGoodsId', max_length=256)  # Field name made lowercase.
+    datetype = models.CharField(db_column='dateType', max_length=256)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'DownLoadOperationHistory'
 
 
 class KeywordsPutonEffect(models.Model):
@@ -89,23 +94,11 @@ class KeywordsPutonEffect(models.Model):
         db_table = 'KeyWords_PutOn_Effect'
 
 
-class Keywordsdescribe(models.Model):
-    primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
-    keywords = models.CharField(db_column='Keywords', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    markword = models.CharField(db_column='MarkWord', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    noteword = models.CharField(db_column='NoteWord', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'KeywordsDescribe'
-
-
 class Keywordssummary(models.Model):
     primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
+    datetime = models.CharField(db_column='DateTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
     weightpoints = models.CharField(db_column='WeightPoints', max_length=255, blank=True, null=True)  # Field name made lowercase.
     keywords = models.CharField(db_column='Keywords', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    markword = models.CharField(db_column='MarkWord', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    noteword = models.CharField(db_column='NoteWord', max_length=255, blank=True, null=True)  # Field name made lowercase.
     industrysearchpopularity = models.CharField(db_column='IndustrySearchPopularity', max_length=255, blank=True, null=True)  # Field name made lowercase.
     industrytransformation = models.CharField(db_column='IndustryTransformation', max_length=255, blank=True, null=True)  # Field name made lowercase.
     visitorstosearch = models.CharField(db_column='VisitorsToSearch', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -128,56 +121,79 @@ class Keywordssummary(models.Model):
     mingconversionweight = models.CharField(db_column='MingConversionWeight', max_length=255, blank=True, null=True)  # Field name made lowercase.
     competingconversionweight = models.CharField(db_column='CompetingConversionWeight', max_length=255, blank=True, null=True)  # Field name made lowercase.
     conversiontotalscore = models.CharField(db_column='ConversionTotalScore', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    productname = models.CharField(db_column='ProductName', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    searchid = models.CharField(db_column='SearchId', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'KeywordsSummary'
 
 
-class Selfsearchdata(models.Model):
-    date = models.CharField(db_column='Date', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    sourcename = models.CharField(db_column='SourceName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    visitors = models.CharField(db_column='Visitors', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    views = models.CharField(db_column='Views', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    browseproportion = models.CharField(db_column='BrowseProportion', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    stationjump = models.CharField(db_column='StationJump', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    stationout = models.CharField(db_column='StationOut', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    collections = models.CharField(db_column='Collections', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    purchasedrepeat = models.CharField(db_column='PurchasedRepeat', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    orders = models.CharField(db_column='Orders', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    orders_rate = models.CharField(db_column='Orders_Rate', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    paypackages = models.CharField(db_column='PayPackages', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    paybuyer = models.CharField(db_column='PayBuyer', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    paymentconversionrate = models.CharField(db_column='PaymentConversionRate', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    directpayment = models.CharField(db_column='DirectPayment', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    fanspay = models.CharField(db_column='FansPay', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    collectionspay = models.CharField(db_column='CollectionsPay', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    repeatbuy = models.CharField(db_column='RepeatBuy', max_length=255, blank=True, null=True)  # Field name made lowercase.
+class Mainproduct(models.Model):
     primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
+    productname = models.CharField(db_column='ProductName', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    searchid = models.CharField(db_column='SearchId', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'SelfSearchData'
+        db_table = 'MainProduct'
 
 
-class Valueofkeywords(models.Model):
+class SearchRanklist(models.Model):
+    module = models.CharField(max_length=128)
+    starttime = models.CharField(max_length=256)
+    endtime = models.CharField(max_length=256)
+    searchid = models.CharField(max_length=256)
+    clickhits = models.IntegerField(db_column='clickHits')  # Field name made lowercase.
+    clickrate = models.CharField(db_column='clickRate', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    hotsearchrank = models.IntegerField(db_column='hotSearchRank')  # Field name made lowercase.
+    ordernum = models.IntegerField(db_column='orderNum')  # Field name made lowercase.
+    p4prefprice = models.CharField(db_column='p4pRefPrice', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    payrate = models.CharField(db_column='payRate', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    seipvuvhits = models.IntegerField(db_column='seIpvUvHits')  # Field name made lowercase.
+    searchword = models.CharField(db_column='searchWord', max_length=256)  # Field name made lowercase.
+    soarrank = models.CharField(db_column='soarRank', max_length=256)  # Field name made lowercase.
+    tmclickrate = models.CharField(db_column='tmClickRate', max_length=256, blank=True, null=True)  # Field name made lowercase.
     primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
-    keywords = models.CharField(db_column='KeyWords', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    show = models.CharField(db_column='Show', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    click = models.CharField(db_column='Click', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    ctr = models.CharField(db_column='CTR', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    spending = models.CharField(db_column='Spending', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    ppc = models.CharField(db_column='PPC', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    totalcount = models.CharField(db_column='TotalCount', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    cvr = models.CharField(db_column='CVR', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    amount = models.CharField(db_column='Amount', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    roi = models.CharField(db_column='ROI', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    uv = models.CharField(db_column='UV', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    guestunitprice = models.CharField(db_column='GuestUnitPrice', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    datetype = models.CharField(db_column='dateType', max_length=256)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'ValueOfKeyWords'
+        db_table = 'Search_RankList'
+
+
+class Trafficsources(models.Model):
+    primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
+    module = models.CharField(max_length=128)
+    starttime = models.CharField(db_column='startTime', max_length=256)  # Field name made lowercase.
+    endtime = models.CharField(db_column='endTime', max_length=256)  # Field name made lowercase.
+    goodid = models.CharField(db_column='goodId', max_length=256)  # Field name made lowercase.
+    pagename = models.CharField(db_column='pageName', max_length=256)  # Field name made lowercase.
+    datetype = models.CharField(db_column='dateType', max_length=256)  # Field name made lowercase.
+    uv = models.IntegerField()
+    crtbyrcnt = models.CharField(db_column='crtByrCnt', max_length=256)  # Field name made lowercase.
+    crtrate = models.CharField(db_column='crtRate', max_length=256)  # Field name made lowercase.
+    pv = models.CharField(max_length=256)
+    ratio = models.CharField(max_length=256)
+    jpselfuv = models.CharField(db_column='jpSelfUv', max_length=256)  # Field name made lowercase.
+    jpuv = models.CharField(db_column='jpUv', max_length=256)  # Field name made lowercase.
+    cltcnt = models.CharField(db_column='cltCnt', max_length=256)  # Field name made lowercase.
+    cartbyrcnt = models.CharField(db_column='cartByrCnt', max_length=256)  # Field name made lowercase.
+    payitmcnt = models.CharField(db_column='payItmCnt', max_length=256)  # Field name made lowercase.
+    paybyrcnt = models.CharField(db_column='payByrCnt', max_length=256)  # Field name made lowercase.
+    payrate = models.CharField(db_column='payRate', max_length=256)  # Field name made lowercase.
+    directpaybyrcnt = models.CharField(db_column='directPayByrCnt', max_length=256)  # Field name made lowercase.
+    cltitmpaybyrcnt = models.CharField(db_column='cltItmPayByrCnt', max_length=256)  # Field name made lowercase.
+    fanspaybyrcnt = models.CharField(db_column='fansPayByrCnt', max_length=256)  # Field name made lowercase.
+    orditmpaybyrcnt = models.CharField(db_column='ordItmPayByrCnt', max_length=256)  # Field name made lowercase.
+    itemid = models.CharField(db_column='itemId', max_length=256)  # Field name made lowercase.
+    ppageid = models.CharField(db_column='pPageId', max_length=256)  # Field name made lowercase.
+    pageid = models.CharField(db_column='pageId', max_length=256)  # Field name made lowercase.
+    pagelevel = models.CharField(db_column='pageLevel', max_length=256)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'TrafficSources'
 
 
 class AuthGroup(models.Model):
@@ -304,38 +320,8 @@ class DownloadMysql(models.Model):
 
 
 class Storagefilelocal(models.Model):
-    excelfile = models.FileField(db_column='excelFile', max_length=100)  # Field name made lowercase.
+    excelfile = models.CharField(db_column='excelFile', max_length=100)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'storagefilelocal'
-
-
-class SearchRankList(models.Model):
-    module = models.CharField(max_length=128, verbose_name="模块类型")
-    starttime  = models.CharField(max_length=256, verbose_name="搜索开始时间")
-    endtime = models.CharField(max_length=256, verbose_name="搜索结束时间")
-    searchid = models.CharField(max_length=256, verbose_name="搜索Id")
-    clickHits = models.IntegerField(default=0, verbose_name="点击人气")
-    clickRate = models.CharField(max_length=256, blank=True, null=True, verbose_name="点击率")
-    hotSearchRank = models.IntegerField(default=0, verbose_name="热搜排行")
-    orderNum = models.IntegerField(default=0, verbose_name="订单号")
-    p4pRefPrice = models.CharField(max_length=256, blank=True, null=True, verbose_name="p4pRefPrice")
-    payRate = models.CharField(max_length=256, blank=True, null=True,  verbose_name="支付转化率")
-    seIpvUvHits = models.IntegerField(default=0, verbose_name="搜索人气")
-    searchWord = models.CharField(max_length=256, blank=True, verbose_name="搜索词")
-    soarRank = models.CharField(max_length=256, verbose_name="soarRank")
-    tmClickRate = models.CharField(max_length=256, blank=True, null=True, verbose_name="天猫点击转化率")
-    primary_key_id = models.AutoField(db_column='Primary_key_ID', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        verbose_name = verbose_name_plural = "热搜排行"
-
-class DownLoadOperationHistory(models.Model):
-    operationDate = models.CharField(max_length=128, verbose_name="操作时间")
-    operationMouleName = models.CharField(max_length=258, verbose_name="操作模块名称")
-    searchid = models.CharField(max_length=256, default='', verbose_name="搜索Id")
-    downLoadCount = models.IntegerField(verbose_name="数据条数")
-
-    class Meta:
-        verbose_name = verbose_name_plural = "操作记录"

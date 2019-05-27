@@ -28,5 +28,10 @@ urlpatterns = [
     url(r'^chandle/popKey', views.popKey, name='popKey'),
     url(r'^search_tm_data', views.search_tm_data, name='search_tm_data'),
     url(r'^search_tm_hotRank', views.search_tm_hotRank, name='search_tm_hotRank'),
+    url(r'^search_tm_Competition', views.search_tm_Competition, name='search_tm_Competition'),
+    url(r'^search_tm_Source ', views.search_tm_Source, name='search_tm_Source '),
+    url(r'^requeryMainProduct', views.requeryMainProduct, name='requeryMainProduct'),
+    url(r'^IntegrationData', views.IntegrationData, name='IntegrationData'),
+    url(r'^requeryKeyWordData', views.requeryKeyWordData, name='requeryKeyWordData')
 
 ]

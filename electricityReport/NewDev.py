@@ -8,7 +8,7 @@ import json
 class PrpCrypt(object):
 
     def __init__(self):
-        key = 'sycmsycmsycmsycm'
+        key = 'w28Cz694s63kBYk4'
         self.key = key.encode('utf-8')
         self.mode = AES.MODE_CBC
 
@@ -16,7 +16,7 @@ class PrpCrypt(object):
     # 如果大于16当时不是16的倍数，那就补足为16的倍数。
     def encrypt(self, text):
         text = text.encode('utf-8')
-        cryptor = AES.new(self.key, self.mode, b'mcysmcysmcysmcys')
+        cryptor = AES.new(self.key, self.mode, b'4kYBk36s496zC82w')
         # 这里密钥key 长度必须为16（AES-128）,
         # 24（AES-192）,或者32 （AES-256）Bytes 长度
         # 目前AES-128 足够目前使用
@@ -38,25 +38,27 @@ class PrpCrypt(object):
 
     # 解密后，去掉补足的空格用strip() 去掉
     def decrypt(self, text):
-        cryptor = AES.new(self.key, self.mode, b'mcysmcysmcysmcys')
+        cryptor = AES.new(self.key, self.mode, b'4kYBk36s496zC82w')
         plain_text = cryptor.decrypt(a2b_hex(text))
         # return plain_text.rstrip('\0')
 
-        print(len(bytes.decode(plain_text).rstrip('\0')))
-        str = bytes.decode(plain_text).rstrip('\\0').rstrip()
-        print(len(str))
+        # print(.decode('gbk'))
 
-        # print('%#x' % ord(str[-1:]))
 
-        #将解密后的字符串 截取最后一位转16进制 进行判断
-        six = '%#x' % ord(str[-1:])
-        #如果 等于 0x1 那么就截掉 不是就
-        if six == '0x1':
-            print('有0x1')
-            return str[:-1]
-        else:
-            print('无空格')
-            return str
+        str = bytes.decode(plain_text)
+        for j in reversed(str):
+            ix = '%#x' % ord(j)
+            if len(ix)<4:
+                str = str[:-1]
+            else:
+                break
+
+        print('%#x' % ord(str[-1:]))
+
+
+        return str
+
+
 
 
 
