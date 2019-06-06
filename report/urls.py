@@ -18,11 +18,14 @@ from django.urls import path
 from electricityReport import views
 from django.conf.urls import include,url
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^chandle/showpage', views.showpage),
     url(r'^chandle/excel_expoet', views.excel_expoet, name='excel_expoet'),
     url(r'^chandle/getExcel_keyWords', views.getExcel_keyWords, name='getExcel_keyWords'),
+    url(r'^chandle/getExcel_mingexpoet', views.getExcel_mingexpoet, name='getExcel_mingexpoet'),
+    url(r'^chandle/getExcel_comexpoet', views.getExcel_comexpoet, name='getExcel_comexpoet'),
     url(r'^chandle/parsingData', views.parsingData, name='parsingData'),
     url(r'^chandle/getKey', views.getKey, name='getKey'),
     url(r'^chandle/popKey', views.popKey, name='popKey'),
@@ -32,6 +35,14 @@ urlpatterns = [
     url(r'^search_tm_Source ', views.search_tm_Source, name='search_tm_Source '),
     url(r'^requeryMainProduct', views.requeryMainProduct, name='requeryMainProduct'),
     url(r'^IntegrationData', views.IntegrationData, name='IntegrationData'),
-    url(r'^requeryKeyWordData', views.requeryKeyWordData, name='requeryKeyWordData')
+    url(r'^requeryKeyWordData', views.requeryKeyWordData, name='requeryKeyWordData'),
+    url(r'^requeryItemsGraph', views.requeryItemsGraph, name='requeryItemsGraph'),
+    url(r'^requeryItemDetail', views.requeryItemDetail, name='requeryItemDetail'),
+    url(r'^write_excel', views.write_excel, name='write_excel'),
+    url(r'^keyWordsResult', views.keyWordsResult, name='keyWordsResult'),
+    url(r'^keyWordsTotalData', views.keyWordsTotalData, name='keyWordsTotalData'),
+    url(r'^searchRecommend', views.searchRecommend, name='searchRecommend'),
+    url(r'mcategory', views.mcategory, name='mcategory'),
+    url(r'ccategory', views.ccategory, name='ccategory'),
 
 ]

@@ -6,7 +6,7 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 </head>
 <body>
-      <form action="excel_expoet" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <form action="excel_expoet" method="post" enctype="multipart/form-data" target="hidden_frame">
         <div id="contentTable" style="border: 0px;">
               <h1 class="title" style="font-size: 24px; border-bottom: 1px solid #DFE3E6;text-align: center;">导入数据</h1>
              <table width="80%">
@@ -27,7 +27,7 @@
              </table>
         </div>
       </form>
-      <form action="getExcel_keyWords" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <form action="getExcel_keyWords" method="post" enctype="multipart/form-data" target="hidden_frame">
         <div id="contentTable" style="border: 0px;">
              <table width="80%">
                  {% for field2 in form2 %}
@@ -47,7 +47,69 @@
              </table>
         </div>
       </form>
-      <iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
+        <form action="getExcel_mingexpoet" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <div id="contentTable" style="border: 0px;">
+             <table width="80%">
+                 {% for field4 in form4 %}
+                     <tr>
+                       <td width="20%"align="left">
+                        {{field4.label }}
+                       </td>
+                         <td width="20%">
+                           <form>
+                               <select id = "changeM"  name="category">
+                         <option value="collagen">胶原蛋白</option>
+                         <option value="enzyme">酵素</option>
+                         <option value="oysters">牡蛎</option>
+                         <option value="maca">玛卡</option>
+                                   <option value="probiotics">益生菌</option>
+
+                         </select>
+                     </form>
+                       </td>
+
+                       <td width="50%" id="name_h1" title="" style="text-align: center;">
+                        {{ field4 }}
+                       </td>
+                         <td><input id="btnSave"  type="submit" value="上&nbsp;传" />
+                      </td>
+
+                     </tr>
+                 {% endfor %}
+             </table>
+        </div>
+      </form>
+        <form action="getExcel_comexpoet" method="post" enctype="multipart/form-data" target="hidden_frame">
+        <div id="contentTable" style="border: 0px;">
+             <table width="80%">
+                 {% for field5 in form5 %}
+                     <tr>
+                       <td width="20%"align="left">
+                        {{field5.label }}
+                       </td>
+                       <td width="20%">
+                           <form>
+                               <select id = "changeC" name="category">
+                         <option value="collagen">胶原蛋白</option>
+                         <option value="enzyme">酵素</option>
+                         <option value="oysters">牡蛎</option>
+                         <option value="maca">玛卡</option>
+                                   <option value="probiotics">益生菌</option>
+                         </select>
+                     </form>
+                       </td>
+                       <td width="50%" id="name_h1" title="" style="text-align: center;">
+                        {{ field5 }}
+                       </td>
+                         <td><input id="btnSave"  type="submit" value="上&nbsp;传" />
+                      </td>
+
+                     </tr>
+                 {% endfor %}
+             </table>
+        </div>
+      </form>
+        <iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
 </body>
 <script>
  $('#hidden_frame').load(function(){
@@ -55,6 +117,41 @@
        // 根据后台返回值处理结果
      if(text)
        alert(text);
+});
+
+$("#changeM").change(function (){
+    var ss = $(this).children('option:selected').val();
+    $.ajax({
+                url: 'http://127.0.0.1:8000/mcategory',
+                type: "POST",
+                data: { 'type' : ss},
+                success: function (data) {
+                    {#data = JSON.parse(data);#}
+                    {#if (data["status"] == 1) {#}
+                    {#    setSceneTd(data["result"], scece_name, td);#}
+                    {#} else {#}
+                    {#    alert(data["result"]);#}
+                    {#}#}
+                }
+            });
+    console.log(ss)
+});
+$("#changeC").change(function (){
+    var ss = $(this).children('option:selected').val();
+    $.ajax({
+                url: 'http://127.0.0.1:8000/ccategory',
+                type: "POST",
+                data: { 'type' : ss},
+                success: function (data) {
+                    {#data = JSON.parse(data);#}
+                    {#if (data["status"] == 1) {#}
+                    {#    setSceneTd(data["result"], scece_name, td);#}
+                    {#} else {#}
+                    {#    alert(data["result"]);#}
+                    {#}#}
+                }
+            });
+    console.log(ss)
 });
 </script>
 </html>

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'report.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'TMData',
+    'NAME': 'TestData',
     'USER': 'root',
     'HOST':'39.98.88.168',
     'PASSWORD': 'root',
